@@ -17,10 +17,12 @@ export default class Configure extends React.Component {
     const { montlyLimitInput } = this.props;
     return (
       <div className="content-main">
-        <form>
-          <input type="text" name="amount" value={montlyLimitInput} onChange={this.handleInput} />
-          <button type="button" name="Set" onClick={this.handleSetButton}>Set</button>
-        </form>
+        <div className="form-inputs content-block">
+          <form>
+            <input type="text" name="amount" value={montlyLimitInput} onChange={this.handleInput} />
+            <button type="button" name="Set" onClick={this.handleSetButton}>Set</button>
+          </form>
+        </div>
       </div>
     )
   }

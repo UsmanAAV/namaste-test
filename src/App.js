@@ -68,26 +68,26 @@ class App extends Component {
       moneyAmountInput,
       history,
       monthBalance,
-      dayBalance
+      dayBalance,
     } = this.state;
     return (
       <Router>
         <div className="container">
-          <div className="header-container">
-            <header>
+          <header>
+            <div className="header-container">
               <div className="app-title">
-                <p>Planner</p>
+                <h3>Planner</h3>
               </div>
-              <nav>
-                <ul>
-                  <li><NavLink to="/main">Main</NavLink></li>
-                  <li><NavLink to="/configure">Configure</NavLink></li>
+              <nav className="menu-top">
+                <ul className="menu-main">
+                  <li className="menu-item"><NavLink to="/main">Main</NavLink></li>
+                  <li className="menu-item"><NavLink to="/configure">Configure</NavLink></li>
                 </ul>
               </nav>
-            </header>
-          </div>
-          <div className="main-container">
-            <main>
+            </div>
+          </header>
+          <main>
+            <div className="main-container">
               <Route
                 path="/main"
                 exact
@@ -121,8 +121,8 @@ class App extends Component {
                 }
               />
               <Route exact path="/" component={() => <Redirect to="/configure" />}/>
-            </main>
-          </div>
+            </div>
+          </main>
         </div>
       </Router>
     );

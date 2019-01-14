@@ -16,10 +16,10 @@ export default class Main extends React.Component {
     const { moneyAmountInput } = this.props;
     return (
       <div className="content-main">
-        <div className="input">
+        <div className="form-inputs content-block">
           <div className="labels">
-            montlyLimit rest
-            dailyLimit rest
+            <div className="monthBalance">montlyLimit rest</div>
+            <div className="dayBalance">dailyLimit rest</div>
           </div>
           <form>
             <input type="text" name="amount" value={moneyAmountInput} onChange={this.handleInput} />
@@ -27,7 +27,7 @@ export default class Main extends React.Component {
             <button type="button" name="income" onClick={this.handleButton('income')}>income</button>
           </form>
         </div>
-        <div className="history">
+        <div className="history content-block">
           history
         </div>
       </div>

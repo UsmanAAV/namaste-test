@@ -1,0 +1,38 @@
+.header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+header {
+  background: #343434;
+}
+.app-title, .menu-item {
+  color: #EEE;
+}
+
+.menu-main {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+}
+
+.menu-main a, .menu-main a:hover {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+
+.content-main {
+  width: 300px;
+}
+
+.content-block {
+  margin-top: 10px;
+  background: #343434;
+}
