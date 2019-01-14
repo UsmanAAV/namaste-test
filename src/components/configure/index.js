@@ -7,18 +7,19 @@ export default class Configure extends React.Component {
   }
 
   handleInput = (e) => {
-    e.preventDefault();
     const { changeMonthlyLimitInput } = this.props;
     const { value } = e.target;
     changeMonthlyLimitInput(value);
   }
+
+  handleSubmit = e => e.preventDefault();
 
   render() {
     const { montlyLimitInput } = this.props;
     return (
       <div className="content-main">
         <div className="form-inputs content-block">
-          <form>
+          <form onSubmit={this.handleSubmit}>
             <input type="text" name="amount" value={montlyLimitInput} onChange={this.handleInput} />
             <button type="button" name="Set" onClick={this.handleSetButton}>Set</button>
           </form>

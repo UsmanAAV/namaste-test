@@ -45,19 +45,34 @@ class App extends Component {
     }
   };
 
+  getUpdatedBalances = (type, value) => {
+    const { monthBalance, dayBalance } = this.state;
+    const newValue = value * (type === 'expense' ? -1 : 1);
+    const newMonthBalance = monthBalance + newValue;
+    const newDayBalance = dayBalance + newValue;
+    return { monthBalance: newMonthBalance, dayBalance: newDayBalance };
+  }
+
   addRecordToHistory = (type) => {
-    const { moneyAmountInput, history, monthBalance, dayBalance } = this.state;
+    const { moneyAmountInput, history } = this.state;
     const newId = _.uniqueId();
     const newRecord = { id: newId, type, value: Number(moneyAmountInput), date: Date.now() };
-    const changingAmount = moneyAmountInput * (type === 'expense' ? -1 : 1);
-    const newMonthBalance = monthBalance + changingAmount;
-    const newDayBalance = dayBalance + changingAmount;
     const updatedHistory = { ...history, [newId]: newRecord };
     this.setState({
+      ...this.getUpdatedBalances(type, moneyAmountInput),
       history: updatedHistory,
       moneyAmountInput: '',
-      monthBalance: newMonthBalance,
-      dayBalance: newDayBalance,
+    });
+  }
+
+  removeRecordFromHistory = (id) => {
+    const { history } = this.state;
+    const { type, value } = history[id];
+    const updatedHistory = _.omit(history, id);
+    this.setState({
+      ...this.getUpdatedBalances(type, -value),
+      history: updatedHistory,
+      moneyAmountInput: '',
     });
   }
 
@@ -96,11 +111,12 @@ class App extends Component {
                     <Main
                       {...props}
                       moneyAmountInput={moneyAmountInput}
-                      changeMoneyAmountInput={this.changeMoneyAmountInput}
-                      addRecordToHistory={this.addRecordToHistory}
                       monthBalance={monthBalance}
                       dayBalance={dayBalance}
                       history={history}
+                      changeMoneyAmountInput={this.changeMoneyAmountInput}
+                      addRecordToHistory={this.addRecordToHistory}
+                      removeRecordFromHistory={this.removeRecordFromHistory}
                     />
                   )
                 }
