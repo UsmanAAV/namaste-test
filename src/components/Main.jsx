@@ -1,12 +1,7 @@
 import React from 'react';
+import Input from './Input.jsx';
 
 export default class Main extends React.Component {
-  handleInput = (e) => {
-    const { changeMoneyAmountInput } = this.props;
-    const { value } = e.target;
-    changeMoneyAmountInput(value);
-  }
-
   handleButton = type => () => {
     const { addRecordToHistory } = this.props;
     addRecordToHistory(type);
@@ -20,7 +15,7 @@ export default class Main extends React.Component {
   handleSubmit = e => e.preventDefault();
 
   render() {
-    const { moneyAmountInput, monthBalance, dayBalance, history } = this.props;
+    const { moneyAmountInput, monthBalance, dayBalance, history, changeMoneyAmountInput } = this.props;
     return (
       <div className="content-main">
         <div className="form-inputs content-block">
@@ -29,7 +24,7 @@ export default class Main extends React.Component {
             <div className="dayBalance">{dayBalance}left for the day</div>
           </div>
           <form onSubmit={this.handleSubmit}>
-            <input type="text" name="amount" value={moneyAmountInput} onChange={this.handleInput} />
+            <Input name="amount" value={moneyAmountInput} changeValue={changeMoneyAmountInput} />
             <button type="button" name="expense" onClick={this.handleButton('expense')}>expense</button>
             <button type="button" name="income" onClick={this.handleButton('income')}>income</button>
           </form>

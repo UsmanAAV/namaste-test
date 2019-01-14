@@ -1,28 +1,28 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import { BrowserRouter as Router, Route, NavLink, Redirect } from "react-router-dom";
-import Main from './components/main';
-import Configure from './components/configure';
+import Main from './components/Main.jsx';
+import Configure from './components/Configure.jsx';
 import './App.css';
 
 class App extends Component {
   state = {
-    montlyLimit: 0,
-    montlyLimitInput: '',
+    monthlyLimit: 0,
+    monthlyLimitInput: '',
     moneyAmountInput: '',
     monthBalance: 0,
     dayBalance: 0,
     history: {},
   };
 
-  changeMonthlyLimit = () => {
-    const { monthBalance, montlyLimit, montlyLimitInput } = this.state;
-    const newMonthlyLimit = Number(montlyLimitInput);
-    const updatedMonthBalance = monthBalance + (newMonthlyLimit - montlyLimit);
+  setMonthlyLimit = () => {
+    const { monthBalance, monthlyLimit, monthlyLimitInput } = this.state;
+    const newMonthlyLimit = Number(monthlyLimitInput);
+    const updatedMonthBalance = monthBalance + (newMonthlyLimit - monthlyLimit);
     const updatedDayBalance = Math.floor(updatedMonthBalance / 30);
     this.setState({
-      montlyLimit: newMonthlyLimit,
-      montlyLimitInput: '',
+      monthlyLimit: newMonthlyLimit,
+      monthlyLimitInput: '',
       monthBalance: updatedMonthBalance,
       dayBalance: updatedDayBalance,
     });
@@ -34,15 +34,11 @@ class App extends Component {
   };
 
   changeMonthlyLimitInput = value => {
-    if (this.isNumber(value)) {
-      this.setState({ montlyLimitInput: value });
-    }
+    this.setState({ monthlyLimitInput: value });
   };
 
   changeMoneyAmountInput = value => {
-    if (this.isNumber(value)) {
-      this.setState({ moneyAmountInput: value });
-    }
+    this.setState({ moneyAmountInput: value });
   };
 
   getUpdatedBalances = (type, value) => {
@@ -78,8 +74,8 @@ class App extends Component {
 
   render() {
     const {
-      montlyLimit,
-      montlyLimitInput,
+      monthlyLimit,
+      monthlyLimitInput,
       moneyAmountInput,
       history,
       monthBalance,
@@ -128,9 +124,9 @@ class App extends Component {
                   props => (
                     <Configure
                       {...props}
-                      montlyLimit={montlyLimit}
-                      montlyLimitInput={montlyLimitInput}
-                      changeMonthlyLimit={this.changeMonthlyLimit}
+                      monthlyLimit={monthlyLimit}
+                      monthlyLimitInput={monthlyLimitInput}
+                      setMonthlyLimit={this.setMonthlyLimit}
                       changeMonthlyLimitInput={this.changeMonthlyLimitInput}
                     />
                   )
