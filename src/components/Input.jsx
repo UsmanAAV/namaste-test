@@ -16,7 +16,7 @@ export default class Input extends React.Component {
   render() {
     const { name, value } = this.props;
     return (
-      <input type="text" name={name} value={value} onChange={this.handleInput} />
+      <input className="controls" type="text" name={name} value={value} onChange={this.handleInput} />
     );
   }
 };

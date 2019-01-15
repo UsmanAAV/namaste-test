@@ -28,11 +28,6 @@ class App extends Component {
     });
   };
 
-  isNumber = value => {
-    const regex = new RegExp(/^-?\d*\.?\d*$/);
-    return regex.test(value);
-  };
-
   changeMonthlyLimitInput = value => {
     this.setState({ monthlyLimitInput: value });
   };
@@ -44,9 +39,16 @@ class App extends Component {
   getUpdatedBalances = (type, value) => {
     const { monthBalance, dayBalance } = this.state;
     const newValue = value * (type === 'expense' ? -1 : 1);
-    const newMonthBalance = monthBalance + newValue;
-    const newDayBalance = dayBalance + newValue;
-    return { monthBalance: newMonthBalance, dayBalance: newDayBalance };
+    if (newValue < 0) {
+      return {
+        monthBalance: monthBalance + newValue,
+        dayBalance: dayBalance + newValue,
+      };
+    }
+    return {
+      monthBalance: monthBalance + newValue,
+      dayBalance: Math.floor((monthBalance + newValue) / 30),
+    };
   }
 
   addRecordToHistory = (type) => {

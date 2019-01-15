@@ -8,6 +8,7 @@ header {
   background: #343434;
 }
 .app-title, .menu-item {
+  margin-left: 40px;
   color: #EEE;
 }
 
@@ -15,7 +16,7 @@ header {
   list-style: none;
   display: flex;
   flex-direction: row;
-  height: 100%;
+  margin-right: 40px;
 }
 
 .menu-main a, .menu-main a:hover {
@@ -30,11 +31,83 @@ header {
 }
 
 .content-main {
-  width: 300px;
+  width: 400px;
+  color: #fff;
 }
 
 .content-block {
   margin-top: 10px;
   background: #343434;
-  color: #fff;
+}
+
+.labels {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px 10px 10px 10px;
+}
+
+.form-controls {
+  display: flex;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 30px;
+  padding-top: 10px;
+  justify-content: center;
+}
+
+.controls {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+
+  margin: 10px 5px;
+  border: solid 1px transparent;
+  border-radius: 15px;
+  color: #ffffff;
+  padding: 5px 15px;
+  font-size: 11px;
+  background: #454545;
+}
+
+input.controls {
+  flex-grow: 2;
+}
+
+.controls.expense, .controls.delete {
+  background: red;
+}
+
+.controls.income, .controls.set {
+  background: green;
+}
+
+.history-record {
+  display: flex;
+  justify-content: space-around;
+}
+
+.record-type {
+  font-weight: 800;
+  font-size: 20px;
+  padding: 0px 5px 0px 5px;
+  border-radius: 50%;
+}
+
+.record-value {
+  font-size: 15pt;
+  font-weight: bold;
+}
+
+.record-date {
+  font-size: 11pt;
+}
+
+.redline {
+  background: red;
+  height: 5px;
+  margin: 0 auto;
+  width: 300px;
 }

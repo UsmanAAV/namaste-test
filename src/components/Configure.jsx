@@ -14,9 +14,13 @@ export default class Configure extends React.Component {
     return (
       <div className="content-main">
         <div className="form-inputs content-block">
-          <form onSubmit={this.handleSubmit}>
+          <div className="labels">
+            <p>Monthly Amount</p>
+          </div>
+          <div className="redline" />
+          <form className="form-controls configure" onSubmit={this.handleSubmit}>
             <Input value={monthlyLimitInput} name="amount" changeValue={changeMonthlyLimitInput} />
-            <button type="button" name="set" onClick={this.handleSetButton}>Set</button>
+            <button className="controls set" type="button" name="set" onClick={this.handleSetButton}>Set</button>
           </form>
         </div>
       </div>
