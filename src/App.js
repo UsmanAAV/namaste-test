@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
-import { BrowserRouter as Router, Route, NavLink, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import Header from './components/Header.jsx';
 import Main from './components/Main.jsx';
 import Configure from './components/Configure.jsx';
 import './App.css';
+
+const EXPENSE = 'expense';
 
 class App extends Component {
   state = {
@@ -38,7 +41,7 @@ class App extends Component {
 
   getUpdatedBalances = (type, value) => {
     const { monthBalance, dayBalance } = this.state;
-    const newValue = value * (type === 'expense' ? -1 : 1);
+    const newValue = value * (type === EXPENSE ? -1 : 1);
     if (newValue < 0) {
       return {
         monthBalance: monthBalance + newValue,
@@ -86,19 +89,7 @@ class App extends Component {
     return (
       <Router>
         <div className="container">
-          <header>
-            <div className="header-container">
-              <div className="app-title">
-                <h3>Planner</h3>
-              </div>
-              <nav className="menu-top">
-                <ul className="menu-main">
-                  <li className="menu-item"><NavLink to="/main">Main</NavLink></li>
-                  <li className="menu-item"><NavLink to="/configure">Configure</NavLink></li>
-                </ul>
-              </nav>
-            </div>
-          </header>
+          <Header />
           <main>
             <div className="main-container">
               <Route
