@@ -3,19 +3,23 @@ import Input from './Input.jsx';
 
 export default class Configure extends React.Component {
   handleSetButton = () => {
-    const { setMonthlyLimit } = this.props;
+    const { monthlyLimitInput, setMonthlyLimit } = this.props;
+    if (monthlyLimitInput === '' || monthlyLimitInput === '0') {
+      return;
+    }
     setMonthlyLimit();
   }
 
   handleSubmit = e => e.preventDefault();
 
   render() {
-    const { monthlyLimitInput, changeMonthlyLimitInput } = this.props;
+    const { monthlyLimit, monthlyLimitInput, changeMonthlyLimitInput } = this.props;
     return (
       <div className="content-main">
         <div className="form-inputs content-block">
           <div className="labels">
             <p>Monthly Amount</p>
+            <p>Current: {monthlyLimit}</p>
           </div>
           <div className="redline" />
           <form className="form-controls configure" onSubmit={this.handleSubmit}>

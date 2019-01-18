@@ -2,8 +2,11 @@ import React from 'react';
 import Input from './Input.jsx';
 
 export default class Main extends React.Component {
-  handleButton = type => () => {
-    const { addRecordToHistory } = this.props;
+  handleAddRecord = type => () => {
+    const { moneyAmountInput, addRecordToHistory } = this.props;
+    if (moneyAmountInput === '' || moneyAmountInput === '0') {
+      return;
+    }
     addRecordToHistory(type);
   }
 
@@ -26,8 +29,8 @@ export default class Main extends React.Component {
           <div className="redline" />
           <form className="form-controls main" onSubmit={this.handleSubmit}>
             <Input name="amount" value={moneyAmountInput} changeValue={changeMoneyAmountInput} />
-            <button className="controls expense" type="button" name="expense" onClick={this.handleButton('expense')}>expense</button>
-            <button className="controls income" type="button" name="income" onClick={this.handleButton('income')}>income</button>
+            <button className="controls expense" type="button" name="expense" onClick={this.handleAddRecord('expense')}>expense</button>
+            <button className="controls income" type="button" name="income" onClick={this.handleAddRecord('income')}>income</button>
           </form>
         </div>
         <div className="history content-block">
