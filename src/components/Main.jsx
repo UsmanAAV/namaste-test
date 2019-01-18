@@ -23,12 +23,12 @@ export default class Main extends React.Component {
       <div className="content-main">
         <div className="form-inputs content-block">
           <div className="labels">
-            <div className="balance-label"><p>You have {monthBalance} left for the month</p></div>
-            <div className="balance-label">{dayBalance} left for the day</div>
+            <div className="balance-label"><p>You have <span className="number">{monthBalance}</span> left for the month</p></div>
+            <div className="balance-label">         <span className="number">{dayBalance}</span> left for the day</div>
           </div>
           <div className="redline" />
           <form className="form-controls main" onSubmit={this.handleSubmit}>
-            <Input name="amount" value={moneyAmountInput} changeValue={changeMoneyAmountInput} />
+            <Input name="amount" value={moneyAmountInput} placeholder="enter amount of money here..." changeValue={changeMoneyAmountInput} />
             <button className="controls expense" type="button" name="expense" onClick={this.handleAddRecord('expense')}>expense</button>
             <button className="controls income" type="button" name="income" onClick={this.handleAddRecord('income')}>income</button>
           </form>

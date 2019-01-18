@@ -111,3 +111,7 @@ input.controls {
   margin: 0 auto;
   width: 300px;
 }
+
+.number {
+  font-weight: bold;
+}
